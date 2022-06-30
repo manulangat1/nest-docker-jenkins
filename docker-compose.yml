@@ -1,0 +1,17 @@
+version: '3'
+services:
+  dev-db:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=dev
+      - POSTGRES_PASSWORD=dev
+      - POSTGRES_DB=devnest
+    ports:
+      - "5434:5432"
+    volumes:
+      - ./data/dev-db:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - freecodecamp
+networks:
+  freecodecamp
