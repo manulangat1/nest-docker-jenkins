@@ -1,5 +1,19 @@
 version: '3'
 services:
+  # dev-app: 
+  #   container_name: ${NODE_CONTAINER_NAME}
+  #   build: . 
+  #   command: ${NODE_START_COMMAND}
+  #   volumes: 
+  #     - .:/usr/src/app
+  #   ports: 
+  #     - "3000:3000"
+  #   depends_on:
+  #     - dev-db
+  #   environment:
+  #     - NODE_ENV=${NODE_ENV}
+  #   env_file:
+  #     - .env     
   dev-db:
     image: postgres:13
     environment:
@@ -9,9 +23,13 @@ services:
     ports:
       - "5434:5432"
     volumes:
-      - ./data/dev-db:/var/lib/postgresql/data
-    restart: always
+      - db-data:/var/lib/postgresql/data
     networks:
-      - freecodecamp
+      - devnestcamp
+    restart: always
+volumes:
+  db-data:
+    # driver: local
 networks:
-  freecodecamp
+  devnestcamp:
+  
