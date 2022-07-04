@@ -1,9 +1,9 @@
 def gv
 pipeline{ 
     agent any 
-    tools { 
-        yarn 
-    }
+    // tools { 
+    //     yarn 
+    // }
     stages { 
         stage ("init") { 
             steps{ 
