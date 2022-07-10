@@ -8,6 +8,7 @@ def buildApp () {
 }
 def testApp () {
     echo "testing application"
+    echo "Executing pipeline for branch $BRANCH_NAME"
 }
 def deployApp () {
     echo "deploying application"
