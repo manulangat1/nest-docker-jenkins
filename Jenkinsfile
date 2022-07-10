@@ -1,9 +1,9 @@
 #!usr/bin/env groovy 
 
 @Library('jenkins-shared-library')
-
-// @Library('jenkins-shared-library')_ tells it about the separation
 def gv
+// @Library('jenkins-shared-library')_ tells it about the separation
+
 
 pipeline{ 
     agent any 
