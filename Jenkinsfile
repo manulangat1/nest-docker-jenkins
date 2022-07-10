@@ -48,7 +48,7 @@ pipeline{
             steps{
                 script { 
                     // gv.deployApp()
-                    deployDone()
+                    deployDone 'manulangat' 
                 }
             }
         }
