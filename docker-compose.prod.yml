@@ -4,7 +4,7 @@ services:
     # container_name: ${NODE_CONTAINER_NAME}
     # build: . 
     # command: ${NODE_START_COMMAND}
-    image: manulangat/nest-docker-practise:1.0
+    image: ${IMAGE}
     # volumes: 
     #   - .:/usr/src/app
     ports: 
