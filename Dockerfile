@@ -6,7 +6,7 @@ COPY package*.json ./
 
 RUN yarn install 
 COPY . .
-EXPOSE 3000
+EXPOSE 3002
 CMD ["yarn", "start:dev"]
 # CMD [ "./entry.sh"]
 
