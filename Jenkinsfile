@@ -46,11 +46,13 @@ pipeline{
                 script { 
                     // gv.deployApp()
                     
-                    def dockerComposeCmd = 'docker-compose -f docker-compose.prod.yml up --detach'
+                    // def dockerComposeCmd = 'docker-compose -f docker-compose.prod.yml up --detach'
+                    def shellCmd = "bash ./server-commands.sh"
                     sshagent(['ec2-server-key']) {
                         sh "scp docker-compose.prod.yml ec2-user@52.23.240.150:/home/ec2-user"
+                        sh "scp server-commands.sh  ec2-user@52.23.240.150:/home/ec2-user"
                         sh "scp Dockerfile ec2-user@52.23.240.150:/home/ec2-user"
-                        sh "ssh -o strictHostKeyChecking=no ec2-user@52.23.240.150 ${dockerComposeCmd} "
+                        sh "ssh -o strictHostKeyChecking=no ec2-user@52.23.240.150 ${shellCmd} "
                         }
                     deployDone 'manulangat' 
                 }
