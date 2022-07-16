@@ -47,7 +47,7 @@ pipeline{
                     // gv.deployApp()
                     
                     // def dockerComposeCmd = 'docker-compose -f docker-compose.prod.yml up --detach'
-                    def shellCmd = "bash ./server-commands.sh"
+                    def shellCmd = "bash ./server-commands.sh manulangat/nest-docker-practise:1.0"
                     sshagent(['ec2-server-key']) {
                         sh "scp docker-compose.prod.yml ec2-user@52.23.240.150:/home/ec2-user"
                         sh "scp server-commands.sh  ec2-user@52.23.240.150:/home/ec2-user"
