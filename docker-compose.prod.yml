@@ -1,0 +1,36 @@
+version: '3'
+services:
+  dev-app: 
+    container_name: ${NODE_CONTAINER_NAME}
+    # build: . 
+    # command: ${NODE_START_COMMAND}
+    image: manulangat/nest-docker-practise:1.0
+    volumes: 
+      - .:/usr/src/app
+    ports: 
+      - "3000:3002"
+    depends_on:
+      - dev-db
+    environment:
+      - NODE_ENV=${NODE_ENV}
+    env_file:
+      - .env     
+  dev-db:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=dev
+      - POSTGRES_PASSWORD=dev
+      - POSTGRES_DB=devnest
+    ports:
+      - "5434:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - devnestcamp
+    restart: always
+volumes:
+  db-data:
+    # driver: local
+networks:
+  devnestcamp:
+  
