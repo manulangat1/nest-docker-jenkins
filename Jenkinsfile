@@ -46,9 +46,10 @@ pipeline{
                 script { 
                     // gv.deployApp()
                     
-                    def dockerCmd = 'docker run -p 3000:3000 -d  manulangat/nest-docker-practise:1.0'
+                    def dockerComposeCmd = 'docker-compose -f docker-compose.yml up --detach'
                     sshagent(['ec2-server-key']) {
-                        sh "ssh -o strictHostKeyChecking=no ec2-user@52.23.240.150 ${dockerCmd} "
+                        sh "scp docker-compose.yml ec2-user@52.23.240.150:/home/ec2-user"
+                        sh "ssh -o strictHostKeyChecking=no ec2-user@52.23.240.150 ${dockerComposeCmd} "
                         }
                     deployDone 'manulangat' 
                 }
