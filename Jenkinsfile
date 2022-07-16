@@ -7,9 +7,6 @@ def gv
 
 pipeline{ 
     agent any 
-    // tools { 
-    //     yarn 
-    // }
     stages { 
         stage ("init") { 
             steps{ 
@@ -48,6 +45,11 @@ pipeline{
             steps{
                 script { 
                     // gv.deployApp()
+                    
+                    def dockerCmd = 'docker run -p 3000:3000 -d  manulangat/nest-docker-practise:1.0'
+                    sshagent(['ec2-server-key']) {
+                        sh "ssh -o strictHostKeyChecking=no ec2-user@52.23.240.150 ${dockerCmd} "
+                        }
                     deployDone 'manulangat' 
                 }
             }
